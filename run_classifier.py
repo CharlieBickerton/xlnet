@@ -203,7 +203,7 @@ class DataProcessor(object):
       return lines
 
 
-class TOXICProcessor(DataProcessor):
+class ToxicProcessor(DataProcessor):
   def __init__(self):
     self.train_file = "train_preprocessed.csv"
     self.dev_file = "dev.tsv"
@@ -215,7 +215,7 @@ class TOXICProcessor(DataProcessor):
     return self._create_examples(
         self._read_csv(os.path.join(data_dir, self.train_file)), "train")
 
-  def get_train_examples(self, data_dir):
+  def get_test_examples(self, data_dir):
     """See base class."""
     return self._create_examples(
         self._read_csv(os.path.join(data_dir, self.test_file)), "test")
@@ -679,7 +679,8 @@ def main(_):
       "mnli_mismatched": MnliMismatchedProcessor,
       'sts-b': StsbProcessor,
       'imdb': ImdbProcessor,
-      "yelp5": Yelp5Processor
+      "yelp5": Yelp5Processor,
+      "toxic": ToxicProcessor
   }
 
   if not FLAGS.do_train and not FLAGS.do_eval and not FLAGS.do_predict:
