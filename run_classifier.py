@@ -213,7 +213,7 @@ class TOXICProcessor(DataProcessor):
     """See base class."""
     print('data_dir(train)', data_dir)
     return self._create_examples(
-        self._read_csv(os.path.join(data_dir, self.train_file)), "train"))
+        self._read_csv(os.path.join(data_dir, self.train_file)), "train")
 
   def get_train_examples(self, data_dir):
     """See base class."""
