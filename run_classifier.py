@@ -191,6 +191,35 @@ class DataProcessor(object):
         lines.append(line)
       return lines
 
+  @classmethod
+  def _read_csv(cls, input_file):
+    """Reads comma separated value file"""
+    with tf.gfile.Open(input_file, "r") as f:
+      reader = csv.reader(f, delimiter=' ', quotechar='|'))
+      lines = []
+      for line in reader:
+        if len(line) == 0: continue
+        lines.append(line)
+      return lines
+
+
+class TOXICProcessor(DataProcessor):
+  def __init__(self):
+    self.train_file = "train_preprocessed.csv"
+    self.dev_file = "dev.tsv"
+    self.test_file = "test_preprocessed.csv"
+
+  def get_train_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        print('data_dir(train)', data_dir)
+        self._read_csv(os.path.join(data_dir, self.train_file)), "train")
+
+  def get_train_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        self._read_csv(os.path.join(data_dir, self.test_file)), "test")
+
 
 class GLUEProcessor(DataProcessor):
   def __init__(self):
