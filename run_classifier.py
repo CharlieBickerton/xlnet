@@ -195,7 +195,7 @@ class DataProcessor(object):
   def _read_csv(cls, input_file):
     """Reads comma separated value file"""
     with tf.gfile.Open(input_file, "r") as f:
-      reader = csv.reader(f, delimiter=' ', quotechar='|'))
+      reader = csv.reader(f, delimiter=' ', quotechar='|')
       lines = []
       for line in reader:
         if len(line) == 0: continue
