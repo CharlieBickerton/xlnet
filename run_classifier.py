@@ -209,6 +209,9 @@ class ToxicProcessor(DataProcessor):
     self.dev_file = "dev.tsv"
     self.test_file = "test_preprocessed.csv"
 
+  def get_labels(self):
+    return ["toxic", "entailment", "neutral"]
+
   def get_train_examples(self, data_dir):
     """See base class."""
     print('data_dir(train)', data_dir)
